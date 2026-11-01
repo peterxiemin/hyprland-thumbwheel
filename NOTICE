@@ -1,0 +1,7 @@
+This plugin uses Hyprland internal interfaces and its layout-selection and
+focus handling are informed by Hyprland's scrolling gesture implementation:
+https://github.com/hyprwm/Hyprland/blob/0aa6745f705f2c4b0a5004eb019ef76e5bbdb426/src/managers/input/trackpad/gestures/ScrollMoveGesture.cpp
+
+Hyprland is distributed under the BSD 3-Clause License:
+Copyright (c) 2022-2026, vaxerski. All rights reserved.
+The complete upstream license is reproduced in LICENSE.hyprland.

@@ -1,0 +1,9 @@
+[repository]
+name = "hyprland-thumbwheel"
+authors = ["peterxiemin"]
+
+[xiemin-thumbwheel]
+description = "Continuous scrolling-layout movement with a horizontal mouse wheel"
+authors = ["peterxiemin"]
+output = "thumbwheel.so"
+build = ["make all"]
