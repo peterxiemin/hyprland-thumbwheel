@@ -9,6 +9,9 @@ $(TARGET): main.cpp
 	$(CXX) $(CXXFLAGS) -shared $< -o $@.new $$(pkg-config --cflags --libs hyprland libeis-1.0)
 	mv $@.new $@
 
-.PHONY: clean
+.PHONY: test clean
+test: $(TARGET)
+	python3 tests/integration.py
+
 clean:
 	$(RM) $(TARGET)

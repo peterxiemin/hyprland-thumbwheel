@@ -36,7 +36,18 @@ To unload, run `hyprctl plugin unload` with the same absolute path used to load 
 
 ## Validation
 
-On Hyprland 0.57.0, the plugin was loaded in a nested compositor and tested with synthetic full- and half-size horizontal wheel events; movement scaled with input, reversed back to the starting position, and survived unload and workspace-switch cases. It was also checked with synthetic events in one running desktop session. Physical-device feel and other Hyprland versions have not yet been broadly tested.
+On Hyprland 0.57.0, the public repository was added with the matching `hyprpm` binary, built, enabled, loaded, disabled, unloaded and removed in an isolated user/mount namespace with a nested compositor. The test used temporary state and a namespace-local privilege wrapper, so the normal system privilege prompt and package installation path were not tested.
+
+The included integration test opens a temporary nested Hyprland window and tests:
+
+- Proportional movement and reversal for full and half wheel deltas.
+- Input delivery to an application on a non-scrolling layout and on a special workspace.
+- Input delivery for Shift + horizontal wheel and for vertical wheel on a scrolling workspace.
+- Safe unload with an idle timer pending and a workspace switch during scrolling.
+
+Run `make test` from a running Wayland session. In addition to the build dependencies above, this needs `foot`, `wev`, `wtype`, `wayland-scanner`, and the Wayland client development files. The nested compositor and test windows are closed when the test exits. The vendored virtual-pointer protocol XML in `tests/` retains its upstream MIT license notice.
+
+The plugin was also checked with synthetic events in one running desktop session. Physical-device feel, lock-screen and input-capture behavior, and other Hyprland versions have not yet been broadly tested.
 
 ## License
 
